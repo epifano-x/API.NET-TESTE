@@ -1,4 +1,12 @@
+using Microsoft.EntityFrameworkCore;
+using Teste_Lar.Context;
+using Teste_Lar.Models.Interface;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// Registre o ConnectionContext
+builder.Services.AddDbContext<ConnectionContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Add services to the container.
 
@@ -6,6 +14,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddTransient<IPessoaRepository, PessoaRepository>();
 
 var app = builder.Build();
 
