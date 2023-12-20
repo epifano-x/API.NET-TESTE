@@ -31,5 +31,8 @@ namespace Teste_Lar.Models
         [Column("EstaAtivo")]
         public bool EstaAtivo { get; set; }
 
+        // Coleção para Telefones
+        public virtual required ICollection<Telefone> Telefones { get; set; }
+
     }
 }

@@ -11,6 +11,7 @@ namespace Teste_Lar.Context
         {
         }
         public DbSet<Pessoa> Pessoa { get; set; }
+        public DbSet<Telefone> Telefone { get; set; }
 
 
     }

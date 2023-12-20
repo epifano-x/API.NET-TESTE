@@ -2,7 +2,9 @@ using Microsoft.EntityFrameworkCore;
 using Teste_Lar.Context;
 using Teste_Lar.Models.Interface;
 
+
 var builder = WebApplication.CreateBuilder(args);
+
 
 // Registre o ConnectionContext
 builder.Services.AddDbContext<ConnectionContext>(options =>
@@ -16,6 +18,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddTransient<IPessoaRepository, PessoaRepository>();
+builder.Services.AddTransient<ITelefoneRepository, TelefoneRepository>();
 
 var app = builder.Build();
 

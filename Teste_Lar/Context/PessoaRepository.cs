@@ -15,7 +15,8 @@ namespace Teste_Lar.Context
 
         public async Task<IEnumerable<Pessoa>> GetAllAsync()
         {
-            return await _context.Pessoa.ToListAsync();
+            // Inclui os telefones na consulta
+            return await _context.Pessoa.Include(p => p.Telefones).ToListAsync();
         }
 
         public async Task<Pessoa> GetByIdAsync(int id)
