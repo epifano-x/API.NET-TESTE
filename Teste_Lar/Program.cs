@@ -1,28 +1,52 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 using Teste_Lar.Context;
 using Teste_Lar.Models.Interface;
-
+using Teste_Lar.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Adicione esta seção para configurar a autenticação JWT
+var key = Encoding.ASCII.GetBytes(builder.Configuration["JwtConfig:Secret"]);
+builder.Services.AddAuthentication(x =>
+{
+    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(x =>
+{
+    x.RequireHttpsMetadata = false; // Ajuste conforme necessário para produção
+    x.SaveToken = true;
+    x.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(key),
+        ValidateIssuer = false,
+        ValidateAudience = false
+    };
+});
 
 // Registre o ConnectionContext
 builder.Services.AddDbContext<ConnectionContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Add services to the container.
-
+// Adicione os serviços de repositório
+builder.Services.AddTransient<IPessoaRepository, PessoaRepository>();
+builder.Services.AddTransient<ITelefoneRepository, TelefoneRepository>();
+builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+builder.Services.AddSingleton<AuthenticationManager>();
+// Adicione os controladores
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+// Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddTransient<IPessoaRepository, PessoaRepository>();
-builder.Services.AddTransient<ITelefoneRepository, TelefoneRepository>();
-
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Pipeline de requisições
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -31,7 +55,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
+// Adicione os middlewares de autenticação e autorização
+app.UseAuthentication(); // Middleware de autenticação
+app.UseAuthorization(); // Middleware de autorização
 
 app.MapControllers();
 

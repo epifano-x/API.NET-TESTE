@@ -3,6 +3,7 @@ using Teste_Lar.Models;
 using Teste_Lar.Models.Interface;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Teste_Lar.Controllers
 {
@@ -17,6 +18,7 @@ namespace Teste_Lar.Controllers
             _telefoneRepository = telefoneRepository;
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Telefone>>> Get()
         {
@@ -24,6 +26,7 @@ namespace Teste_Lar.Controllers
             return Ok(telefones);
         }
 
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<Telefone>> Get(int id)
         {
@@ -35,6 +38,7 @@ namespace Teste_Lar.Controllers
             return Ok(telefone);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<Telefone>> Post([FromBody] Telefone telefone)
         {
@@ -42,6 +46,7 @@ namespace Teste_Lar.Controllers
             return CreatedAtAction(nameof(Get), new { id = telefone.Id }, telefone);
         }
 
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(int id, [FromBody] Telefone telefone)
         {
@@ -55,6 +60,7 @@ namespace Teste_Lar.Controllers
             return NoContent();
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {

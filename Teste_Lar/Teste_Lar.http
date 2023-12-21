@@ -1,6 +1,7 @@
 @Teste_Lar_HostAddress = http://localhost:5109
 
-GET {{Teste_Lar_HostAddress}}/pessoa/
+GET {{Teste_Lar_HostAddress}}/Usuario/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsIm5iZiI6MTcwMzEzMjI4NywiZXhwIjoxNzAzNzM3MDg3LCJpYXQiOjE3MDMxMzIyODd9.LLpZ1tNLfsKeh7FTKKaoDG7PtVSFpk0tQeX4jLU7erA
 Accept: application/json
 
 ###
