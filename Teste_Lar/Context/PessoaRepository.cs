@@ -21,8 +21,11 @@ namespace Teste_Lar.Context
 
         public async Task<Pessoa> GetByIdAsync(int id)
         {
-            return await _context.Pessoa.FindAsync(id);
+            return await _context.Pessoa
+                                 .Include(p => p.Telefones)
+                                 .FirstOrDefaultAsync(p => p.Id == id);
         }
+
 
         public async Task CreateAsync(Pessoa pessoa)
         {
