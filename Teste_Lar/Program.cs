@@ -43,6 +43,13 @@ builder.Services.AddControllers();
 // Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin",
+        builder => builder.WithOrigins("http://localhost:3000") // Front-end origin
+                          .AllowAnyHeader()
+                          .AllowAnyMethod());
+});
 
 var app = builder.Build();
 
@@ -54,10 +61,20 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseRouting();
 
-// Adicione os middlewares de autenticação e autorização
-app.UseAuthentication(); // Middleware de autenticação
-app.UseAuthorization(); // Middleware de autorização
+// Middlewares de autenticação e autorização
+app.UseAuthentication();
+app.UseAuthorization();
+
+// Outros middlewares, como UseCors, se você estiver usando CORS
+app.UseCors("AllowSpecificOrigin");
+
+// Finalmente, UseEndpoints para mapear os controladores
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+});
 
 app.MapControllers();
 
