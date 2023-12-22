@@ -61,20 +61,19 @@ html{
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50%;
-  width: 100px;
+  height: 40px;
+  width: 200px;
   margin-top: 30px;
   margin-left: 20px;
-  border-radius: 15%;
-  color: #4e4e4e; /* Cor do texto */
+  color: #7c7c7c; /* Cor do texto */
   background-color: #212529; /* Cor de fundo */
   border-color: #212529; /* Cor da borda */
 
   /* Estilos para hover */
   &:hover {
-    color: #444444;
-    background-color: #424649;
-    border-color: #373b3e;
+    color: #a8a8a8;
+    background-color: #5a5a5a;
+    border-color: #444444;
   }
 
   /* Estilos para foco (quando o link está selecionado) */

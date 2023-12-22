@@ -4,18 +4,23 @@ using Teste_Lar.Models.Interface;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
+using Teste_Lar.Context;
 
 namespace Teste_Lar.Controllers
 {
     [ApiController]
     [Route("[controller]")]
     public class PessoaController : ControllerBase
+
     {
         private readonly IPessoaRepository _pessoaRepository;
+        private readonly ITelefoneRepository _telefoneRepository;
 
-        public PessoaController(IPessoaRepository pessoaRepository)
+
+        public PessoaController(IPessoaRepository pessoaRepository, ITelefoneRepository telefoneRepository)
         {
             _pessoaRepository = pessoaRepository;
+            _telefoneRepository = telefoneRepository;
         }
 
         [Authorize]
@@ -55,10 +60,57 @@ namespace Teste_Lar.Controllers
                 return BadRequest();
             }
 
-            await _pessoaRepository.UpdateAsync(pessoa);
+            var pessoaExistente = await _pessoaRepository.GetByIdAsync(id);
+            if (pessoaExistente == null)
+            {
+                return NotFound();
+            }
+
+            // Atualizar propriedades da pessoa
+            pessoaExistente.Nome = pessoa.Nome;
+            pessoaExistente.CPF = pessoa.CPF;
+            pessoaExistente.DataNascimento = pessoa.DataNascimento;
+            pessoaExistente.EstaAtivo = pessoa.EstaAtivo;
+
+            // Atualizar telefones
+            foreach (var telefone in pessoa.Telefones)
+            {
+                if (telefone.Id == 0)
+                {
+                    // Novo telefone
+                    telefone.PessoaId = pessoa.Id;
+                    await _telefoneRepository.CreateAsync(telefone);
+                }
+                else
+                {
+                    // Atualizar telefone existente
+                    var telefoneExistente = await _telefoneRepository.GetByIdAsync(telefone.Id);
+                    if (telefoneExistente != null)
+                    {
+                        telefoneExistente.Numero = telefone.Numero;
+                        telefoneExistente.Tipo = telefone.Tipo;
+                        telefoneExistente.IsWhatsApp = telefone.IsWhatsApp;
+                        await _telefoneRepository.UpdateAsync(telefoneExistente);
+                    }
+                }
+            }
+
+            // Remover telefones não presentes na lista atualizada
+            var telefonesExistentes = await _telefoneRepository.GetAllAsync();
+            foreach (var telefoneExistente in telefonesExistentes)
+            {
+                if (telefoneExistente.PessoaId == pessoa.Id && !pessoa.Telefones.Any(t => t.Id == telefoneExistente.Id))
+                {
+                    await _telefoneRepository.DeleteAsync(telefoneExistente.Id);
+                }
+            }
+
+            // Salvar alterações da pessoa
+            await _pessoaRepository.UpdateAsync(pessoaExistente);
 
             return NoContent();
         }
+
 
         [Authorize]
         [HttpDelete("{id}")]

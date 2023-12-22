@@ -11,9 +11,38 @@ function TelaLogado({ onLogout }) {
     estaAtivo: true,
     telefones: [{ numero: '', tipo: 'Celular', isWhatsApp: false }]
   });
+
+  const [formDataUsuario, setFormDataUsuario] = useState({
+    username: '',
+    password: ''
+  });
+  
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [showFailureModal, setShowFailureModal] = useState(false);
 
+  const handleInputChangeUsuario = (e) => {
+    const { name, value } = e.target;
+    setFormDataUsuario({ ...formDataUsuario, [name]: value });
+  };
+  
+  const handleSubmitUsuario = async (e) => {
+    e.preventDefault();
+    try {
+      const token = localStorage.getItem('token');
+      await axios.post('http://localhost:5109/Usuario', formDataUsuario, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      setShowSuccessModal(true); // Mostra o modal de sucesso
+      setFormDataUsuario({ username: '', password: '' }); // Limpa o formulário
+    } catch (error) {
+      setShowFailureModal(true); // Mostra o modal de falha
+    }
+  };
+  
+
+  
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.setItem('estaLogado', 'false');
@@ -84,10 +113,13 @@ function TelaLogado({ onLogout }) {
         <div className="container-fluid">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link active" href="#" onClick={() => setTelaAtual('listaPessoas')}>Pessoas</a>
+              <a className="nav-link active" href="#" onClick={() => setTelaAtual('listaPessoas')}>Lista Pessoas</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#" onClick={() => setTelaAtual('formulario')}>Criar</a>
+              <a className="nav-link" href="#" onClick={() => setTelaAtual('formulario')}>Criar Pessoa</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#" onClick={() => setTelaAtual('cadastroUsuario')}>Criar Usuário</a>
             </li>
           </ul>
           <form className="d-flex">
@@ -146,6 +178,23 @@ function TelaLogado({ onLogout }) {
 
       {telaAtual === 'listaPessoas' && (
         <TelaPessoas voltarParaInicio={() => setTelaAtual('inicio')} />
+      )}
+
+      {telaAtual === 'cadastroUsuario' && (
+        <div className="container mt-4">
+          <h2>Cadastro de Usuário</h2>
+          <form onSubmit={handleSubmitUsuario}>
+            <div className="mb-3">
+              <label htmlFor="username" className="form-label">Usuário</label>
+              <input type="text" className="form-control" id="username" name="username" value={formDataUsuario.username} onChange={handleInputChangeUsuario} />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="password" className="form-label">Senha</label>
+              <input type="password" className="form-control" id="password" name="password" value={formDataUsuario.password} onChange={handleInputChangeUsuario} />
+            </div>
+            <button type="submit" className="btn btn-primary">Cadastrar</button>
+          </form>
+        </div>
       )}
 
       {showSuccessModal && (
