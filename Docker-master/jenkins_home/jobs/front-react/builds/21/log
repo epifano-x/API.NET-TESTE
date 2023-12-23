@@ -1,0 +1,220 @@
+Started by user [8mha:////4PiNLc1UIX/9cgP0tDTrrNSYGSt+U+Tq/h10n05NpK/XAAAAmR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzWEgZe/dLi1CL91ILMtMS8fAD6zBVIwgAAAA==[0mbruno
+Running as SYSTEM
+Building in workspace /var/jenkins_home/jobs/front-react/workspace
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/jenkins_home/jobs/front-react/workspace/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/epifano-x/Teste_Lar_Fe # timeout=10
+Fetching upstream changes from https://github.com/epifano-x/Teste_Lar_Fe
+ > git --version # timeout=10
+ > git --version # 'git version 2.39.2'
+ > git fetch --tags --force --progress -- https://github.com/epifano-x/Teste_Lar_Fe +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 21ce96b5d2aaedeefd2745294ccedc40a0a86926 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 21ce96b5d2aaedeefd2745294ccedc40a0a86926 # timeout=10
+Commit message: "update gatway"
+ > git rev-list --no-walk 10a6acaafe298dc98c927f23890e0a6291373f85 # timeout=10
+[workspace] $ /bin/sh -xe /tmp/jenkins16770983137289594575.sh
++ ls
+Dockerfile
+README.md
+package-lock.json
+package.json
+public
+src
++ docker rm front-react -f
+front-react
++ docker rmi front-react -f
+Untagged: front-react:latest
+Deleted: sha256:99122887f662e910039bc1d26ab03a645bb6f9671800494f4b2fcc43d46f964d
+Deleted: sha256:0c169938d1e99f3b80d1b89ced12f2acb7e29f34e138e0f1124692ea1ba038c6
+Deleted: sha256:aec1fd0f4d204b0e62dbd18782957ab575cd92d001902e4b3e77548e6fefc624
+Deleted: sha256:ff1e144d2f0d39be3a7ef4346cffb9f6f78a4d634dbfc93d5c7bb85d569b5053
+Deleted: sha256:d3e18b7a4bac16f1958005a1b43d7d157a9beb31c3954cfcfb8b7eb35a84f35b
+Deleted: sha256:bfa394a238a7ece89030e08176a01fea8adbd6ce4d045b5b8595c6cc758d9839
+Deleted: sha256:12f12b50c4514792190b6943cd2445d4275b7d8f3e1692ae16997d0f58f4acc6
+Deleted: sha256:bca62e192e57cf0ded45ffcba1083d4538853d506d8c73d4f29dda6965286a6f
+Deleted: sha256:5dd0e54b2fd306f5de300863fe37a2fdb823421e68f32ba311a7b271f4844281
+Deleted: sha256:e3649422e2afc53bd68777f6383bb82319029b0f4c437b9c2fda71875f3cbd9c
+Deleted: sha256:141e39721d2d07cdc7a11306aa26cccd14020aa5af50ae514c861d82689bf44f
+Deleted: sha256:790a96aae70f1f8096be69a71a0edce28ba4c1191928208c3d419d3523b2f9b2
+Deleted: sha256:36cbd8f99d0c2c43258ff8a79c9792c30c774f1b0536dcd5e854bdc156613627
+Deleted: sha256:36e6d66303dc9c69fd96f6499d4eb8c2235cf4bf969a43fc69184b97b6c06d76
+Deleted: sha256:1d12470fa662a2a5cb50378dcdc8ea228c1735747db410bbefb8e2d9144b5452
++ docker build -t front-react .
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon  1.234MB
+Step 1/9 : FROM node:14
+14: Pulling from library/node
+2ff1d7c41c74: Already exists
+b253aeafeaa7: Already exists
+3d2201bd995c: Already exists
+1de76e268b10: Already exists
+d9a8df589451: Already exists
+6f51ee005dea: Already exists
+5f32ed3c3f27: Already exists
+0c8cc2f24a4d: Already exists
+0d27a8e86132: Already exists
+Digest: sha256:a158d3b9b4e3fa813fa6c8c590b8f0a860e015ad4e59bbce5744d2f6fd8461aa
+Status: Downloaded newer image for node:14
+ ---> 1d12470fa662
+Step 2/9 : WORKDIR /app
+ ---> Running in 23f48a2e2529
+Removing intermediate container 23f48a2e2529
+ ---> 53ca5dbaf7ca
+Step 3/9 : COPY package*.json ./
+ ---> 94c918d470a5
+Step 4/9 : RUN npm install @popperjs/core
+ ---> Running in 48514dc82f8d
+[91mnpm WARN read-shrinkwrap This version of npm is compatible with lockfileVersion@1, but package-lock.json was generated for lockfileVersion@3. I'll try to do my best with it!
+[0m+ @popperjs/core@2.11.8
+added 1 package from 1 contributor and audited 1 package in 1.665s
+
+1 package is looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+Removing intermediate container 48514dc82f8d
+ ---> 3fe159b2d8db
+Step 5/9 : RUN npm update
+ ---> Running in 4ea40e59a4dd
+[91mnpm WARN deprecated svgo@1.3.2: This SVGO version is no longer supported. Upgrade to v2.x.x.
+[0m[91mnpm WARN deprecated stable@0.1.8: Modern JS already guarantees Array#sort() is a stable sort, so this library is deprecated. See the compatibility table on MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#browser_compatibility
+[0m[91mnpm WARN deprecated @babel/plugin-proposal-nullish-coalescing-operator@7.18.6: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-nullish-coalescing-operator instead.
+[0m[91mnpm WARN deprecated @babel/plugin-proposal-optional-chaining@7.21.0: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-optional-chaining instead.
+[0m[91mnpm WARN deprecated @babel/plugin-proposal-private-methods@7.18.6: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-private-methods instead.
+[0m[91mnpm WARN deprecated @babel/plugin-proposal-class-properties@7.18.6: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-class-properties instead.
+[0m[91mnpm WARN deprecated @babel/plugin-proposal-numeric-separator@7.18.6: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-numeric-separator instead.
+[0m[91mnpm WARN deprecated abab@2.0.6: Use your platform's native atob() and btoa() methods instead
+[0m[91mnpm WARN deprecated domexception@2.0.1: Use your platform's native DOMException instead
+[0m[91mnpm WARN deprecated w3c-hr-time@1.0.2: Use your platform's native performance.now() and performance.timeOrigin.
+[0m[91mnpm WARN deprecated workbox-cacheable-response@6.6.0: workbox-background-sync@6.6.0
+[0m[91mnpm WARN deprecated rollup-plugin-terser@7.0.2: This package has been deprecated and is no longer maintained. Please use @rollup/plugin-terser
+[0m[91mnpm WARN deprecated sourcemap-codec@1.4.8: Please use @jridgewell/sourcemap-codec instead
+[0m
+> core-js@3.34.0 postinstall /app/node_modules/core-js
+> node -e "try{require('./postinstall')}catch(e){}"
+
+[96mThank you for using core-js ([94m https://github.com/zloirock/core-js [96m) for polyfilling JavaScript standard library![0m
+
+[96mThe project needs your help! Please consider supporting core-js:[0m
+[96m>[94m https://opencollective.com/core-js [0m
+[96m>[94m https://patreon.com/zloirock [0m
+[96m>[94m https://boosty.to/zloirock [0m
+[96m>[94m bitcoin: bc1qlea7544qtsmj2rayg0lthvza9fau63ux0fstcz [0m
+
+[96mI highly recommend reading this:[94m https://github.com/zloirock/core-js/blob/master/docs/2023-02-14-so-whats-next.md [96m[0m
+
+
+> core-js-pure@3.34.0 postinstall /app/node_modules/core-js-pure
+> node -e "try{require('./postinstall')}catch(e){}"
+
+[96mThank you for using core-js ([94m https://github.com/zloirock/core-js [96m) for polyfilling JavaScript standard library![0m
+
+[96mThe project needs your help! Please consider supporting core-js:[0m
+[96m>[94m https://opencollective.com/core-js [0m
+[96m>[94m https://patreon.com/zloirock [0m
+[96m>[94m https://boosty.to/zloirock [0m
+[96m>[94m bitcoin: bc1qlea7544qtsmj2rayg0lthvza9fau63ux0fstcz [0m
+
+[96mI highly recommend reading this:[94m https://github.com/zloirock/core-js/blob/master/docs/2023-02-14-so-whats-next.md [96m[0m
+
+[91mnpm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@^2.3.2 (node_modules/react-scripts/node_modules/fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.3.3: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
+[0m[91mnpm WARN tsutils@3.21.0 requires a peer of typescript@>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta but none is installed. You must install peer dependencies yourself.
+[0m[91mnpm WARN fork-ts-checker-webpack-plugin@6.5.3 requires a peer of typescript@>= 2.7 but none is installed. You must install peer dependencies yourself.
+[0m[91mnpm WARN @apideck/better-ajv-errors@0.3.6 requires a peer of ajv@>=8 but none is installed. You must install peer dependencies yourself.
+[0m[91m
+[0m+ react-rating-stars-component@2.2.0
++ js-cookie@3.0.5
++ axios@1.6.2
++ react@18.2.0
++ react-router-dom@6.21.1
++ react-scripts@5.0.1
++ web-vitals@2.1.4
++ react-dom@18.2.0
++ bootstrap@5.3.2
++ @testing-library/react@13.4.0
++ @testing-library/jest-dom@5.17.0
++ @testing-library/user-event@13.5.0
+added 1572 packages from 730 contributors and audited 1574 packages in 198.537s
+
+256 packages are looking for funding
+  run `npm fund` for details
+
+found 2 vulnerabilities (1 moderate, 1 high)
+  run `npm audit fix` to fix them, or `npm audit` for details
+Removing intermediate container 4ea40e59a4dd
+ ---> 52cc71c3f181
+Step 6/9 : COPY . .
+ ---> 0e953c6ba60c
+Step 7/9 : RUN npm run build
+ ---> Running in 4d917214b541
+
+> turismo-fe@0.1.0 build /app
+> react-scripts build
+
+Creating an optimized production build...
+[91m[0;33mOne of your dependencies, babel-preset-react-app, is importing the
+"@babel/plugin-proposal-private-property-in-object" package without
+declaring it in its dependencies. This is currently working because
+"@babel/plugin-proposal-private-property-in-object" is already in your
+node_modules folder for unrelated reasons, but it [1mmay break at any time[0;33m.
+
+babel-preset-react-app is part of the create-react-app project, [1mwhich
+is not maintianed anymore[0;33m. It is thus unlikely that this bug will
+ever be fixed. Add "@babel/plugin-proposal-private-property-in-object" to
+your devDependencies to work around this error. This will make this message
+go away.[0m
+  
+[0mCompiled with warnings.
+
+[eslint] 
+src/components/TelaLogado.js
+  Line 116:15:  The href attribute requires a valid value to be accessible. Provide a valid, navigable address as the href value. If you cannot provide a valid href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/HEAD/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+  Line 119:15:  The href attribute requires a valid value to be accessible. Provide a valid, navigable address as the href value. If you cannot provide a valid href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/HEAD/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+  Line 122:15:  The href attribute requires a valid value to be accessible. Provide a valid, navigable address as the href value. If you cannot provide a valid href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/HEAD/docs/rules/anchor-is-valid.md  jsx-a11y/anchor-is-valid
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+File sizes after gzip:
+
+  89.67 kB  build/static/js/main.856bde78.js
+  32.11 kB  build/static/css/main.d2c1378d.css
+  1.78 kB   build/static/js/787.ad16a01b.chunk.js
+
+The project was built assuming it is hosted at /.
+You can control this with the homepage field in your package.json.
+
+The build folder is ready to be deployed.
+You may serve it with a static server:
+
+  npm install -g serve
+  serve -s build
+
+Find out more about deployment here:
+
+  https://cra.link/deployment
+
+Removing intermediate container 4d917214b541
+ ---> 523356c87919
+Step 8/9 : EXPOSE 3000
+ ---> Running in f6057c9c282a
+Removing intermediate container f6057c9c282a
+ ---> 726dfc345a6f
+Step 9/9 : CMD ["npm", "start"]
+ ---> Running in daf16e112449
+Removing intermediate container daf16e112449
+ ---> 18bc8d4d15f3
+Successfully built 18bc8d4d15f3
+Successfully tagged front-react:latest
++ docker run -d --name front-react -p 3000:3000 --restart=always --network=turismo-master_turismo_network front-react
+2833e1f7206ff6c1f18dac29d3091737247c4f61d95a4de4b7b8b349d18878ca
+Finished: SUCCESS

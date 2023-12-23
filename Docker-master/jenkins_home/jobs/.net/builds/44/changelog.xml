@@ -1,0 +1,9 @@
+commit 5eee33a6778a9dfe5012d3c69685b2e012f99d81
+tree d83aed769b0983ea634dd0a921970b8d571b8134
+parent 58ab5d2a93988a355348a98d579cf851ae16ade9
+author BRUNO ROGLIN <49683237+epifano-x@users.noreply.github.com> 2023-12-22 21:50:47 -0300
+committer GitHub <noreply@github.com> 2023-12-22 21:50:47 -0300
+
+    Update appsettings.json
+
+:100644 100644 3a431d0ee1c08e98a4d7a7a254f88a2baa0b7077 1bd8376be2677a3ab68aa2df6a0fcc2243d4fa3f M	appsettings.json

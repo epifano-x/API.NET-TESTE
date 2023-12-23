@@ -1,0 +1,91 @@
+Started by user [8mha:////4PiNLc1UIX/9cgP0tDTrrNSYGSt+U+Tq/h10n05NpK/XAAAAmR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzWEgZe/dLi1CL91ILMtMS8fAD6zBVIwgAAAA==[0mbruno
+Running as SYSTEM
+Building in workspace /var/jenkins_home/jobs/.net/workspace
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/jenkins_home/jobs/.net/workspace/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/epifano-x/Teste_Lar # timeout=10
+Fetching upstream changes from https://github.com/epifano-x/Teste_Lar
+ > git --version # timeout=10
+ > git --version # 'git version 2.39.2'
+ > git fetch --tags --force --progress -- https://github.com/epifano-x/Teste_Lar +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 58ab5d2a93988a355348a98d579cf851ae16ade9 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 58ab5d2a93988a355348a98d579cf851ae16ade9 # timeout=10
+Commit message: "Update Program.cs"
+ > git rev-list --no-walk 58ab5d2a93988a355348a98d579cf851ae16ade9 # timeout=10
+[workspace] $ /bin/bash /tmp/jenkins11278888665752457351.sh
+Context
+Controllers
+Dockerfile
+Models
+Program.cs
+Properties
+Services
+Teste_Lar.csproj
+Teste_Lar.csproj.user
+Teste_Lar.http
+Teste_Lar.sln
+ViewModel
+appsettings.Development.json
+appsettings.json
+bin
+obj
+api-lar
+Untagged: api-lar:latest
+Deleted: sha256:0e9bb5e9c0231d240456a68825d28ddde9f1ed1c7718b0d69887efe93f2307e1
+Deleted: sha256:e54dc55fba2f804a78009589a76e0f470cf79d98f3f90d305ae2093a9d5313a8
+Deleted: sha256:c40ca3078c642d31998388c705d7d4b1d730c07d6af8a1663d349797866bef22
+Deleted: sha256:8f56d0a6d22fe3a43147bc0daafd060c50df22729ef24140b82434f07a6c3a2a
+Deleted: sha256:3a7a80491c6ff9de0d7cd07c70f0a39cd762481e73127bd45586d0d3f871f303
+Deleted: sha256:238143ec6623f80d133722ceac8ec07bfeeba03f76a08e2f9107634f801dcbd9
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon   16.3MB
+Step 1/13 : FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build-env
+ ---> 8c5c87a41139
+Step 2/13 : WORKDIR /app
+ ---> Using cache
+ ---> a8f1e530ebca
+Step 3/13 : ENV ASPNETCORE_URLS=http://*:5109
+ ---> Using cache
+ ---> 24b37d720b08
+Step 4/13 : COPY *.csproj ./
+ ---> Using cache
+ ---> f052b9ed372b
+Step 5/13 : RUN dotnet restore
+ ---> Using cache
+ ---> be1265a75da2
+Step 6/13 : COPY . ./
+ ---> Using cache
+ ---> f64f06469a35
+Step 7/13 : RUN dotnet build -c Release
+ ---> Using cache
+ ---> e2b8728dfe55
+Step 8/13 : RUN dotnet publish -c Release -o out
+ ---> Using cache
+ ---> 5b6075f70667
+Step 9/13 : FROM mcr.microsoft.com/dotnet/aspnet:8.0
+ ---> 9b20f61ad793
+Step 10/13 : WORKDIR /app
+ ---> Running in 0233b6b964b1
+Removing intermediate container 0233b6b964b1
+ ---> 078a6d504277
+Step 11/13 : COPY --from=build-env /app/out .
+ ---> 0611b2caf66d
+Step 12/13 : EXPOSE 5109
+ ---> Running in ed07ca36109c
+Removing intermediate container ed07ca36109c
+ ---> e1529dd79d9c
+Step 13/13 : ENTRYPOINT ["dotnet", "Teste_Lar.dll"]
+ ---> Running in 3650956cf47d
+Removing intermediate container 3650956cf47d
+ ---> 0d6aff55b0c2
+Successfully built 0d6aff55b0c2
+Successfully tagged api-lar:latest
+f190ae2f9eb2466ed945b9745978b9f8c98c017b9ef7c9db9c5ff1059de01301
+Finished: SUCCESS

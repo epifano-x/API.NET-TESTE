@@ -1,0 +1,13 @@
+commit 21ce96b5d2aaedeefd2745294ccedc40a0a86926
+tree d13e17e6be5952de663831a16bbfcd9e903a73fe
+parent 10a6acaafe298dc98c927f23890e0a6291373f85
+author BRUNO ROGLIN <49683237+epifano-x@users.noreply.github.com> 2023-12-22 20:01:26 -0300
+committer BRUNO ROGLIN <49683237+epifano-x@users.noreply.github.com> 2023-12-22 20:01:26 -0300
+
+    update gatway
+
+
+:100644 100644 aa81d2d0b7add24f90f178d96adb44dabadffda8 f334f3ccfa56e5a1cfe46be8b16e87c93346160f M	src/AppConsts.js
+:100644 100644 6fa1a8bedbad7dbbd4d34d87ab7b4169ddcd1ce0 850c6ba207f9149ece6b2115d2ea4147556bd8f3 M	src/components/TelaLogado.js
+:100644 100644 349c4f7c9a662a46ec9016885369c71d0510233b 171356683084a7e6b4cb396f9c29bdd1f4019795 M	src/components/TelaPessoas.js
+:100644 100644 0196b8911d01bd9636b41568b6e09df03d1cf499 40ea2696431f4042ff023e9914871170eb6d2695 M	src/views/Home.js

@@ -1,0 +1,127 @@
+Started by user [8mha:////4PiNLc1UIX/9cgP0tDTrrNSYGSt+U+Tq/h10n05NpK/XAAAAmR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzWEgZe/dLi1CL91ILMtMS8fAD6zBVIwgAAAA==[0mbruno
+Running as SYSTEM
+Building in workspace /var/jenkins_home/jobs/.net/workspace
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/jenkins_home/jobs/.net/workspace/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/epifano-x/Teste_Lar # timeout=10
+Fetching upstream changes from https://github.com/epifano-x/Teste_Lar
+ > git --version # timeout=10
+ > git --version # 'git version 2.39.2'
+ > git fetch --tags --force --progress -- https://github.com/epifano-x/Teste_Lar +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 5eee33a6778a9dfe5012d3c69685b2e012f99d81 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 5eee33a6778a9dfe5012d3c69685b2e012f99d81 # timeout=10
+Commit message: "Update appsettings.json"
+ > git rev-list --no-walk 58ab5d2a93988a355348a98d579cf851ae16ade9 # timeout=10
+[workspace] $ /bin/bash /tmp/jenkins3022540573067269187.sh
+Context
+Controllers
+Dockerfile
+Models
+Program.cs
+Properties
+Services
+Teste_Lar.csproj
+Teste_Lar.csproj.user
+Teste_Lar.http
+Teste_Lar.sln
+ViewModel
+appsettings.Development.json
+appsettings.json
+bin
+obj
+api-lar
+Untagged: api-lar:latest
+Deleted: sha256:0d6aff55b0c2eea0907c28eebfa058db7a5d2e693637f8023b5e433f7c480899
+Deleted: sha256:e1529dd79d9c94e385ec7a89a61af4bad074a7fe75f97c225b8df0af058d4887
+Deleted: sha256:0611b2caf66d021d740cff6853b58351fefd3907db409c0a368e87303c19f3ff
+Deleted: sha256:27b4469566b27f531285d9dd12238157657b33077b7d4452dbd583e948d2a79b
+Deleted: sha256:078a6d504277d10f5a2706261f31254a0a167c72aa266ff727b11c59c66c4a1d
+Deleted: sha256:e843df1bd652b9f6092da38b0da999333083e468ab5a18d91dfe84e0e5e8b5ec
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon  16.31MB
+Step 1/13 : FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build-env
+ ---> 8c5c87a41139
+Step 2/13 : WORKDIR /app
+ ---> Using cache
+ ---> a8f1e530ebca
+Step 3/13 : ENV ASPNETCORE_URLS=http://*:5109
+ ---> Using cache
+ ---> 24b37d720b08
+Step 4/13 : COPY *.csproj ./
+ ---> Using cache
+ ---> f052b9ed372b
+Step 5/13 : RUN dotnet restore
+ ---> Using cache
+ ---> be1265a75da2
+Step 6/13 : COPY . ./
+ ---> 494a25595820
+Step 7/13 : RUN dotnet build -c Release
+ ---> Running in dde94bb50447
+MSBuild version 17.8.3+195e7f5a3 for .NET
+  Determining projects to restore...
+  Restored /app/Teste_Lar.csproj (in 305 ms).
+/app/Models/Usuario.cs(9,23): warning CS8618: Non-nullable property 'Username' must contain a non-null value when exiting constructor. Consider declaring the property as nullable. [/app/Teste_Lar.csproj]
+/app/Models/Usuario.cs(11,24): warning CS8618: Non-nullable field '_password' must contain a non-null value when exiting constructor. Consider declaring the field as nullable. [/app/Teste_Lar.csproj]
+/app/Services/AuthenticationManager.cs(21,47): warning CS8604: Possible null reference argument for parameter 's' in 'byte[] Encoding.GetBytes(string s)'. [/app/Teste_Lar.csproj]
+/app/Program.cs(12,35): warning CS8604: Possible null reference argument for parameter 's' in 'byte[] Encoding.GetBytes(string s)'. [/app/Teste_Lar.csproj]
+/app/Context/TelefoneRepository.cs(25,20): warning CS8603: Possible null reference return. [/app/Teste_Lar.csproj]
+/app/Context/UsuarioRepository.cs(26,20): warning CS8603: Possible null reference return. [/app/Teste_Lar.csproj]
+/app/Context/PessoaRepository.cs(24,20): warning CS8603: Possible null reference return. [/app/Teste_Lar.csproj]
+/app/Context/UsuarioRepository.cs(52,20): warning CS8603: Possible null reference return. [/app/Teste_Lar.csproj]
+/app/Program.cs(75,5): warning ASP0014: Suggest using top level route registrations instead of UseEndpoints (https://aka.ms/aspnet/analyzers) [/app/Teste_Lar.csproj]
+  Teste_Lar -> /app/bin/Release/net8.0/Teste_Lar.dll
+
+Build succeeded.
+
+/app/Models/Usuario.cs(9,23): warning CS8618: Non-nullable property 'Username' must contain a non-null value when exiting constructor. Consider declaring the property as nullable. [/app/Teste_Lar.csproj]
+/app/Models/Usuario.cs(11,24): warning CS8618: Non-nullable field '_password' must contain a non-null value when exiting constructor. Consider declaring the field as nullable. [/app/Teste_Lar.csproj]
+/app/Services/AuthenticationManager.cs(21,47): warning CS8604: Possible null reference argument for parameter 's' in 'byte[] Encoding.GetBytes(string s)'. [/app/Teste_Lar.csproj]
+/app/Program.cs(12,35): warning CS8604: Possible null reference argument for parameter 's' in 'byte[] Encoding.GetBytes(string s)'. [/app/Teste_Lar.csproj]
+/app/Context/TelefoneRepository.cs(25,20): warning CS8603: Possible null reference return. [/app/Teste_Lar.csproj]
+/app/Context/UsuarioRepository.cs(26,20): warning CS8603: Possible null reference return. [/app/Teste_Lar.csproj]
+/app/Context/PessoaRepository.cs(24,20): warning CS8603: Possible null reference return. [/app/Teste_Lar.csproj]
+/app/Context/UsuarioRepository.cs(52,20): warning CS8603: Possible null reference return. [/app/Teste_Lar.csproj]
+/app/Program.cs(75,5): warning ASP0014: Suggest using top level route registrations instead of UseEndpoints (https://aka.ms/aspnet/analyzers) [/app/Teste_Lar.csproj]
+    9 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:02.16
+Removing intermediate container dde94bb50447
+ ---> 11fc909435ee
+Step 8/13 : RUN dotnet publish -c Release -o out
+ ---> Running in b5390e5431ad
+MSBuild version 17.8.3+195e7f5a3 for .NET
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+/usr/share/dotnet/sdk/8.0.100/Current/SolutionFile/ImportAfter/Microsoft.NET.Sdk.Solution.targets(36,5): warning NETSDK1194: The "--output" option isn't supported when building a solution. Specifying a solution-level output path results in all projects copying outputs to the same directory, which can lead to inconsistent builds. [/app/Teste_Lar.sln]
+  Teste_Lar -> /app/bin/Release/net8.0/Teste_Lar.dll
+  Teste_Lar -> /app/out/
+Removing intermediate container b5390e5431ad
+ ---> 0df403b6db19
+Step 9/13 : FROM mcr.microsoft.com/dotnet/aspnet:8.0
+ ---> 9b20f61ad793
+Step 10/13 : WORKDIR /app
+ ---> Running in 20c2579847a8
+Removing intermediate container 20c2579847a8
+ ---> 8972d3e2a799
+Step 11/13 : COPY --from=build-env /app/out .
+ ---> a9e38fbe61a5
+Step 12/13 : EXPOSE 5109
+ ---> Running in 991db4e1f60f
+Removing intermediate container 991db4e1f60f
+ ---> 2c8d3c20643f
+Step 13/13 : ENTRYPOINT ["dotnet", "Teste_Lar.dll"]
+ ---> Running in 8a95d126fa2f
+Removing intermediate container 8a95d126fa2f
+ ---> 52e0a4ff73b1
+Successfully built 52e0a4ff73b1
+Successfully tagged api-lar:latest
+0267b1751903e74a750eff4d7e8f806df78562d5f64e887ca37145dd814f3983
+Finished: SUCCESS

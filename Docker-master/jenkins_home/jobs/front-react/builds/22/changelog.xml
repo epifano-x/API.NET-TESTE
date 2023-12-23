@@ -1,0 +1,12 @@
+commit f5d9d8088ff37864590e07af7134b8e8d1190bc2
+tree d4feef4a473ea2da5c22ce4cb8f22c8c4a546e9e
+parent 21ce96b5d2aaedeefd2745294ccedc40a0a86926
+author BRUNO ROGLIN <49683237+epifano-x@users.noreply.github.com> 2023-12-23 00:30:55 -0300
+committer BRUNO ROGLIN <49683237+epifano-x@users.noreply.github.com> 2023-12-23 00:30:55 -0300
+
+    uptade -
+    
+    finalizado
+
+
+:100644 100644 171356683084a7e6b4cb396f9c29bdd1f4019795 3ad6440a2357a67be1132a3711be6f06eb3afd48 M	src/components/TelaPessoas.js
